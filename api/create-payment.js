@@ -14,7 +14,7 @@ currency: "NGN",
 redirect_url: "https://celestesuccesspage.uwu.ai",
 customer: {
 name: "Customer",
-email: "kbigbizz@gmail.com"
+email: "kbigbizz@email.com"
 }
 })
 });
