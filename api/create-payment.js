@@ -24,7 +24,7 @@ body: JSON.stringify({
 reference: reference,
 amount: 14500,
 currency: "NGN",
-redirect_url: "https://your-success-page.com",
+redirect_url: "https://successpage.uwu.ai",
 customer: {
 name: "Celeste Customer",
 email: "payment@celeste.com"
