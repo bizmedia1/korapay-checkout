@@ -22,9 +22,9 @@ Authorization: `Bearer ${secret}`
 },
 body: JSON.stringify({
 reference: reference,
-amount: 500,
+amount: 100,
 currency: "NGN",
-redirect_url: "https://successpage.uwu.ai",
+redirect_url: "https://t.me/Celeste_manager1",
 customer: {
 name: "Celeste Customer",
 email: "payment@celeste.com"
