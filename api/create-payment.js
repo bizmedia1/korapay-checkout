@@ -22,7 +22,7 @@ Authorization: `Bearer ${secret}`
 },
 body: JSON.stringify({
 reference: reference,
-amount: 100,
+amount: 14500,
 currency: "NGN",
 redirect_url: "https://t.me/Celeste_manager1",
 customer: {
