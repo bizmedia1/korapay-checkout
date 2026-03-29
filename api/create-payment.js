@@ -22,7 +22,7 @@ Authorization: `Bearer ${secret}`
 },
 body: JSON.stringify({
 reference: reference,
-amount: 14500,
+amount: 500,
 currency: "NGN",
 redirect_url: "https://successpage.uwu.ai",
 customer: {
