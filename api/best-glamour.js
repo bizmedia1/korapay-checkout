@@ -16,7 +16,13 @@ export default async function handler(req, res) {
   try {
 
     // 🔥 GET USER DATA FROM FRONTEND (optional for later)
-    const body = req.body || {};
+    let body = {};
+
+try {
+  body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
+} catch (e) {
+  body = {};
+}
 
     const response = await fetch("https://api.korapay.com/merchant/api/v1/charges/initialize", {
       method: "POST",
@@ -30,8 +36,8 @@ export default async function handler(req, res) {
         reference: "glamour_" + Date.now(),
 
         customer: {
-          email: body.email || "user@email.com",
-          name: body.name || "Glamour User"
+  email: body?.email || "test@gmail.com",
+  name: body?.name || "Glamour User"
         },
 
         redirect_url: "https://your-success-page.com"
