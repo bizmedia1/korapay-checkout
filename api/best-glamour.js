@@ -1,6 +1,5 @@
 export default async function handler(req, res) {
 
-  // CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -15,14 +14,9 @@ export default async function handler(req, res) {
 
   try {
 
-    // 🔥 GET USER DATA FROM FRONTEND (optional for later)
-    let body = {};
-
-try {
-  body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
-} catch (e) {
-  body = {};
-}
+    // 🔥 FORCE VALID DATA (no Carrd issues)
+    const email = "test@gmail.com";
+    const name = "Glamour User";
 
     const response = await fetch("https://api.korapay.com/merchant/api/v1/charges/initialize", {
       method: "POST",
@@ -36,30 +30,31 @@ try {
         reference: "glamour_" + Date.now(),
 
         customer: {
-  email: body?.email || "test@gmail.com",
-  name: body?.name || "Glamour User"
+          email,
+          name
         },
 
-        redirect_url: "https://your-success-page.com"
+        redirect_url: "https://google.com" // change later
       })
     });
 
     const data = await response.json();
 
-    if (!data || data.status !== true) {
+    // 🔥 RETURN FULL RESPONSE (NO GUESS)
+    if (data && data.data && data.data.checkout_url) {
+      return res.status(200).json({
+        checkout_url: data.data.checkout_url
+      });
+    } else {
       return res.status(400).json({
-        error: "Korapay failed",
-        details: data
+        error: "No checkout url",
+        raw: data
       });
     }
 
-    return res.status(200).json({
-      checkout_url: data.data.checkout_url
-    });
-
-  } catch (error) {
+  } catch (err) {
     return res.status(500).json({
-      error: "Server error"
+      error: "Server crash"
     });
   }
 }
