@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const response = await fetch("https://api.korapay.com/merchant/api/v1/charges/initialize", {
       method: "POST",
       headers: {
-        Authorization: "Bearer " + process.env.KORA_SECRET_KEY",
+        Authorization: "Bearer " + process.env.KORA_SECRET_KEY,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
