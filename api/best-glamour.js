@@ -27,10 +27,10 @@ export default async function handler(req, res) {
         amount: 14000,
         currency: "NGN",
         reference: "GLAMOUR_" + Date.now(),
-        redirect_url: "https://google.com",
+        redirect_url: "http://T.me/GLAMOUR_VERIFIED_MANAGER",
         customer: {
           name: "Glamour User",
-          email: "test@gmail.com"
+          email: "glamour@gmail.com"
         }
       })
     });
